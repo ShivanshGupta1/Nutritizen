@@ -77,14 +77,13 @@
         <div class="columns">
           <div class="column is-offset-4 is-4">
                     <form method="POST" action="/finddoctors">
-                         <p style="text-align: center;">Please enter in the format: City, State, Country!</p>
+                         <p style="text-align: center;">Please enter in the format: City!</p>
                         <div class="field has-addons">                            
                             <div class="control is-expanded">
-                                <input class="input" name="location" type="text" placeholder="City Name, State Name, Country Name">
+                                <input  name="location" type="text" placeholder="City Name">
                             </div>
-                        
                             <div class="control">
-                                <button class="button is-info">
+                                <button class="button is-info" id="getCoordinates">
                                     Get Doctors Of the City
                                 </button>
                             </div>
@@ -104,17 +103,17 @@
     </div>
 </div>
          <% } %>
+        
     <% if(doctors !== null && dataFound == true){ %>
-                  <div class="row">
+          <div class="row">      
          <% for(var i=0; i < doctors.length; i++) { %>
-  
-  <div class="col-sm-6" style="margin-left: 15%;">
+   
+  <div class="col-sm-4" style="margin-left: 15%; margin-bottom: 4%;" >
     <div class="card">
       <div class="card-body">
-        <img class="card-img-top" src="<%= doctors[i].main_image %>" alt="No Image of Hospital Found!">
-        <h5 class="card-title"><%= doctors[i].title %></h5>
-        <p class="card-text"> Address: <%= doctors[i].address %></p>
-        <p class="card-text"> Phone: <%= doctors[i].phone %></p>
+        <h5 class="card-title"><%= doctors[i].name %></h5>
+        <p class="card-text"> Address: <%= doctors[i].full_address %></p>
+        <p class="card-text"> Phone: <%= doctors[i].phone_number %></p>
         <a href="<%= doctors[i].url %>" class="btn btn-primary">Website</a>
       </div>
     </div>
@@ -140,5 +139,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
   </body>
 </html>
